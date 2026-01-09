@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitStore | Product Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital@0;1&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #F5F5F0; color: #2D2D2D; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-[#F5F5F0]">
+
+    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 py-8 px-12 flex justify-between items-center border-b border-gray-100">
+        <a href="index.html" class="text-xl tracking-[0.3em] font-light uppercase">FitStore</a>
+        <div class="space-x-12 text-[10px] uppercase tracking-[0.2em] font-medium">
+            <a href="index.html" class="hover:opacity-50 transition">Collection</a>
+            <a href="cart.html" class="hover:opacity-50 transition">Cart <span id="cart-count" class="font-bold text-stone-600">(0)</span> 🛒</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto py-20 px-12 grid grid-cols-1 md:grid-cols-2 gap-20">
+        <div class="bg-white p-4 rounded-sm shadow-sm">
+            <div class="bg-gray-100 rounded-sm overflow-hidden aspect-[4/5]">
+                <img id="p-img" src="" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="flex flex-col justify-center">
+            <span id="p-cat" class="text-[10px] uppercase tracking-[0.4em] text-gray-400 mb-4 block">Category</span>
+            <h1 id="p-name" class="text-5xl font-serif italic mb-6">Loading Product...</h1>
+            <p id="p-price" class="text-2xl mb-8 font-light">€0.00</p>
+            <p id="p-desc" class="text-gray-500 leading-loose mb-12 text-sm max-w-md">Description goes here.</p>
+            
+            <button id="addToCart" class="bg-[#2D2D2D] text-white py-5 px-12 uppercase tracking-[0.2em] text-[10px] font-bold hover:bg-[#8B7E66] transition-all duration-500 w-full md:w-max">
+                Add to Bag
+            </button>
+        </div>
+    </main>
+
+    <section class="max-w-6xl mx-auto py-24 px-12 border-t border-gray-200">
+        <h3 class="text-[10px] uppercase tracking-[0.5em] text-gray-400 mb-16 text-center">You might also like</h3>
+        <div id="related-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+            </div>
+    </section>
+
+    <script>
+        const products = [
+            { id: 1, name: "Muscle Percussion Gun", cat: "Recovery", price: 120.00, desc: "Deep tissue relief for sore muscles.", img: "https://images.unsplash.com/photo-1600880210836-8f83199676be?q=80&w=1000" },
+            { id: 2, name: "Foam Roller Deluxe", cat: "Recovery", price: 35.00, desc: "High-density foam for muscle knots.", img: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?q=80&w=1000" },
+            { id: 3, name: "Compression Sleeves", cat: "Recovery", price: 25.00, desc: "Improve circulation and reduce swelling.", img: "https://images.unsplash.com/photo-1519415510236-855909a04bc6?q=80&w=1000" },
+            { id: 4, name: "Aromatherapy Mist", cat: "Recovery", price: 18.00, desc: "Calming scents for post-workout rest.", img: "https://images.unsplash.com/photo-1616132422495-1e9665e3d543?q=80&w=1000" },
+            { id: 5, name: "Epsom Soak Salt", cat: "Recovery", price: 15.00, desc: "Magnesium-rich salt for muscle recovery.", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecee?q=80&w=1000" },
+            { id: 6, name: "Resistance Band Set", cat: "Strength", price: 29.99, desc: "Three levels of resistance for any workout.", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" },
+            { id: 7, name: "Kettlebell 16kg", cat: "Strength", price: 55.00, desc: "Solid cast iron for strength building.", img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=1000" },
+            { id: 8, name: "Adjustable Dumbbells", cat: "Strength", price: 199.00, desc: "Space-saving weights for home gyms.", img: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=1000" },
+            { id: 9, name: "Pull Up Bar", cat: "Strength", price: 45.00, desc: "Easy doorway installation for upper body.", img: "https://images.unsplash.com/photo-1544033527-b192daee1f5b?q=80&w=1000" },
+            { id: 10, name: "Weighted Vest", cat: "Strength", price: 80.00, desc: "Add 10kg of resistance to your movement.", img: "https://images.unsplash.com/photo-1599058917233-57c0e88cf44b?q=80&w=1000" },
+            { id: 11, name: "Cork Yoga Mat", cat: "Mindfulness", price: 85.00, desc: "Sustainable and naturally antimicrobial.", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
+            { id: 12, name: "Meditation Cushion", cat: "Mindfulness", price: 40.00, desc: "Ergonomic support for deep focus.", img: "https://images.unsplash.com/photo-1593810450967-f9c42742e326?q=80&w=1000" },
+            { id: 13, name: "Singing Bowl", cat: "Mindfulness", price: 65.00, desc: "Handcrafted for sound therapy.", img: "https://images.unsplash.com/photo-1590759235777-649dfbb1c850?q=80&w=1000" },
+            { id: 14, name: "Incense Holder", cat: "Mindfulness", price: 22.00, desc: "Minimalist ceramic design.", img: "https://images.unsplash.com/photo-1602161241198-d62f43be5c6e?q=80&w=1000" },
+            { id: 15, name: "Yoga Block Pair", cat: "Mindfulness", price: 20.00, desc: "Helpful support for new poses.", img: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?q=80&w=1000" }
+        ];
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get('id'));
+        const product = products.find(p => p.id === productId);
+
+        // 1. UPDATE CART COUNTER UI
+        function updateCounter() {
+            const bag = JSON.parse(localStorage.getItem('fitstore_bag')) || [];
+            document.getElementById('cart-count').innerText = `(${bag.length})`;
+        }
+
+        // 2. RENDER PAGE DATA
+        if (product) {
+            document.getElementById('p-name').innerText = product.name;
+            document.getElementById('p-price').innerText = "€" + product.price.toFixed(2);
+            document.getElementById('p-desc').innerText = product.desc;
+            document.getElementById('p-cat').innerText = product.cat;
+            document.getElementById('p-img').src = product.img;
+            renderRelated(product.cat, product.id);
+        } else {
+            window.location.href = 'index.html';
+        }
+
+        // 3. STAY ON PAGE ADD TO CART
+        document.getElementById('addToCart').onclick = function() {
+            let bag = JSON.parse(localStorage.getItem('fitstore_bag')) || [];
+            if (!bag.includes(product.id)) {
+                bag.push(product.id);
+            }
+            localStorage.setItem('fitstore_bag', JSON.stringify(bag));
+            
+            // UI Feedback
+            updateCounter();
+            this.innerText = "Added to Bag";
+            this.style.backgroundColor = "#8B7E66";
+            
+            setTimeout(() => {
+                this.innerText = "Add to Bag";
+                this.style.backgroundColor = "#2D2D2D";
+            }, 2000);
+        };
+
+        // 4. RENDER RELATED PRODUCTS
+        function renderRelated(category, currentId) {
+            const grid = document.getElementById('related-grid');
+            // Filter products in same category excluding current
+            const related = products.filter(p => p.cat === category && p.id !== currentId).slice(0, 3);
+            
+            related.forEach(p => {
+                grid.innerHTML += `
+                    <a href="product.html?id=${p.id}" class="group block text-center">
+                        <div class="bg-white p-3 rounded-sm shadow-sm mb-6 overflow-hidden">
+                            <img src="${p.img}" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                        </div>
+                        <h4 class="text-[10px] uppercase tracking-widest font-bold mb-2">${p.name}</h4>
+                        <p class="text-gray-400 text-xs italic">€${p.price.toFixed(2)}</p>
+                    </a>
+                `;
+            });
+        }
+
+        // Initial Counter Load
+        updateCounter();
+    </script>
+</body>
+</html>

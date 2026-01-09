@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitStore | Main Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-beige { background-color: #F5F5F0; }
+        .text-charcoal { color: #020202; }
+        .bg-stone { background-color: #8B7E66; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+    <div class="space-x-12 text-[10px] uppercase tracking-[0.2em] font-medium">
+    <a href="index.html" class="hover:opacity-50 transition">Collection</a>
+    <a href="cart.html" class="hover:opacity-50 transition">Cart <span id="cart-count">(0)</span> 🛒</a>
+</div>
+    </head>
+<body class="bg-beige text-charcoal font-light">
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 py-6 px-12 flex justify-between items-center border-b border-gray-200">
+        <a href="index.html" class="text-2xl font-semibold tracking-widest text-charcoal uppercase">FitStore</a>
+        <div class="space-x-8 text-xs uppercase tracking-widest font-medium">
+            <a href="index.html" class="border-b border-charcoal">Shop All</a>
+            <a href="cart.html" class="hover:opacity-50 transition">Cart 🛒</a>
+        </div>
+    </nav>
+
+    <header class="py-16 px-12 text-center bg-[#EAEAE3]">
+        <h1 class="text-5xl font-serif mb-4">The Collection</h1>
+        <p class="text-gray-500 max-w-lg mx-auto italic">Quality equipment for the mindful athlete.</p>
+    </header>
+
+    <section class="py-8 px-12 max-w-6xl mx-auto">
+        <div class="flex space-x-4 overflow-x-auto pb-4 no-scrollbar justify-center">
+            <button onclick="filterProducts('All')" class="category-btn active px-6 py-2 rounded-full border border-charcoal bg-charcoal text-white text-xs uppercase tracking-widest">All</button>
+            <button onclick="filterProducts('Recovery')" class="category-btn px-6 py-2 rounded-full border border-gray-300 text-xs uppercase tracking-widest">Recovery</button>
+            <button onclick="filterProducts('Strength')" class="category-btn px-6 py-2 rounded-full border border-gray-300 text-xs uppercase tracking-widest">Strength</button>
+            <button onclick="filterProducts('Mindfulness')" class="category-btn px-6 py-2 rounded-full border border-gray-300 text-xs uppercase tracking-widest">Mindfulness</button>
+        </div>
+    </section>
+
+    <section id="product-grid" class="py-12 px-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+        </section>
+
+    <script>
+        const products = [
+            // RECOVERY
+            { id: 1, name: "Muscle Percussion Gun", cat: "Recovery", price: 120.00, desc: "Deep tissue relief.", img: "https://via.placeholder.com/400x500" },
+            { id: 2, name: "Foam Roller Deluxe", cat: "Recovery", price: 35.00, desc: "High-density recovery.", img: "https://via.placeholder.com/400x500" },
+            { id: 3, name: "Compression Sleeves", cat: "Recovery", price: 25.00, desc: "Improve circulation.", img: "https://via.placeholder.com/400x500" },
+            { id: 4, name: "Aromatherapy Mist", cat: "Recovery", price: 18.00, desc: "Post-workout calm.", img: "https://via.placeholder.com/400x500" },
+            { id: 5, name: "Epsom Soak Salt", cat: "Recovery", price: 15.00, desc: "Magnesium-rich bath.", img: "https://via.placeholder.com/400x500" },
+            // STRENGTH
+            { id: 6, name: "Resistance Band Set", cat: "Strength", price: 29.99, desc: "3 levels of tension.", img: "https://via.placeholder.com/400x500" },
+            { id: 7, name: "Kettlebell 16kg", cat: "Strength", price: 55.00, desc: "Cast iron precision.", img: "https://via.placeholder.com/400x500" },
+            { id: 8, name: "Adjustable Dumbbells", cat: "Strength", price: 199.00, desc: "Space-saving power.", img: "https://via.placeholder.com/400x500" },
+            { id: 9, name: "Pull Up Bar", cat: "Strength", price: 45.00, desc: "Doorway installation.", img: "https://via.placeholder.com/400x500" },
+            { id: 10, name: "Weighted Vest", cat: "Strength", price: 80.00, desc: "Extra 10kg challenge.", img: "https://via.placeholder.com/400x500" },
+            // MINDFULNESS
+            { id: 11, name: "Cork Yoga Mat", cat: "Mindfulness", price: 85.00, desc: "Natural sustainable grip.", img: "https://via.placeholder.com/400x500" },
+            { id: 12, name: "Meditation Cushion", cat: "Mindfulness", price: 40.00, desc: "Perfect spinal alignment.", img: "https://via.placeholder.com/400x500" },
+            { id: 13, name: "Singing Bowl", cat: "Mindfulness", price: 65.00, desc: "Sound healing frequency.", img: "https://via.placeholder.com/400x500" },
+            { id: 14, name: "Incense Holder", cat: "Mindfulness", price: 22.00, desc: "Ceramic handcrafted.", img: "https://via.placeholder.com/400x500" },
+            { id: 15, name: "Yoga Block Pair", cat: "Mindfulness", price: 20.00, desc: "Expand your reach.", img: "https://via.placeholder.com/400x500" }
+        ];
+
+        function renderProducts(filter = 'All') {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            
+            const filtered = filter === 'All' ? products : products.filter(p => p.cat === filter);
+
+            filtered.forEach(p => {
+                grid.innerHTML += `
+                    <div class="group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-200 aspect-[4/5]">
+                            <img src="${p.img}" class="w-full h-full object-cover grayscale-[20%] transition duration-700 group-hover:scale-110">
+                            <a href="product.html?id=${p.id}" class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur py-3 text-center text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition">View Detail</a>
+                        </div>
+                        <h3 class="font-medium text-lg">${p.name}</h3>
+                        <p class="text-gray-500 text-xs italic mb-2">${p.desc}</p>
+                        <p class="text-sm font-bold">€${p.price.toFixed(2)}</p>
+                    </div>
+                `;
+            });
+
+            // ANALYTICS HOOK: Track list view
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'view_item_list',
+                item_list_name: filter
+            });
+        }
+
+        function filterProducts(cat) {
+            // Update UI buttons
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('bg-charcoal', 'text-white');
+                if(btn.innerText === cat) btn.classList.add('bg-charcoal', 'text-white');
+            });
+            renderProducts(cat);
+        }
+
+        renderProducts(); // Initial Load
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital@0;1&display=swap');
+    body { font-family: 'Inter', sans-serif; background-color: #F5F5F0; color: #2D2D2D; }
+    .font-serif { font-family: 'Playfair Display', serif; }
+    .bg-beige { background-color: #F8F4F1; }
+    .bg-stone { background-color: #F8F4F1; }
+    .btn-primary { background-color: #2D2D2D; color: white; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.75rem; transition: all 0.3s; }
+    .btn-primary:hover { background-color: #8B7E66; }
+</style>
+
+<nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 py-8 px-12 flex justify-between items-center border-b border-gray-100">
+    <a href="index.html" class="text-xl tracking-[0.3em] font-light uppercase">FitStore</a>
+    <div class="space-x-12 text-[10px] uppercase tracking-[0.2em] font-medium">
+        <a href="index.html" class="border-b border-black pb-1">Collection</a>
+        <a href="cart.html" class="hover:opacity-50 transition">Cart 🛒</a>
+    </div>
+</nav>
+
+<header class="py-24 px-12 text-center bg-stone">
+    <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 mb-4 block">Est. 2026</span>
+    <h1 class="text-6xl font-serif italic mb-6">The Art of Recovery</h1>
+    <p class="text-gray-500 max-w-md mx-auto font-light leading-relaxed text-sm">A curated selection of professional tools designed for the modern home sanctuary.</p>
+</header>
+
+<div class="flex justify-center space-x-8 py-12 border-b border-gray-100 bg-white">
+    <button onclick="filterProducts('All')" class="text-[10px] uppercase tracking-widest hover:text-stone transition">All</button>
+    <button onclick="filterProducts('Recovery')" class="text-[10px] uppercase tracking-widest hover:text-stone transition">Recovery</button>
+    <button onclick="filterProducts('Strength')" class="text-[10px] uppercase tracking-widest hover:text-stone transition">Strength</button>
+    <button onclick="filterProducts('Mindfulness')" class="text-[10px] uppercase tracking-widest hover:text-stone transition">Mindfulness</button>
+</div>
+</body>
+</html>

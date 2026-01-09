@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitStore | Thank You</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital@0;1&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #F5F5F0; color: #2D2D2D; overflow: hidden; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .btn-primary { background-color: #2D2D2D; color: white; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.75rem; transition: all 0.3s; padding: 1rem 2.5rem; }
+        .btn-primary:hover { background-color: #8B7E66; }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <main class="text-center px-12 z-10">
+        <span class="text-4xl mb-8 block">✧</span>
+        <h1 class="text-6xl font-serif mb-6 italic">Order Confirmed</h1>
+        <p class="text-gray-500 font-light mb-12 leading-loose max-w-md mx-auto">
+            Thank you for choosing FitStore. Your journey to premium wellness starts now.
+        </p>
+        
+        <div class="bg-white p-10 border border-gray-100 shadow-sm inline-block mx-auto mb-12">
+            <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-2">Order Reference</p>
+            <p id="order-id" class="text-sm font-bold tracking-[0.2em]">#FIT-000000</p>
+        </div>
+
+        <br>
+        <a href="index.html" class="btn-primary inline-block rounded-sm">Return to Collection</a>
+    </main>
+
+    <script>
+        // 1. Generate Random Order ID
+        document.getElementById('order-id').innerText = '#FIT-' + Math.floor(Math.random() * 900000 + 100000);
+
+        // 2. Party Explosion (Confetti) Settings
+        // We use colors that match your theme: Charcoal, Stone, and Gold
+        const count = 200;
+        const defaults = {
+            origin: { y: 0.7 },
+            colors: ['#2D2D2D', '#8B7E66', '#D4AF37', '#EAEAE3']
+        };
+
+        function fire(particleRatio, opts) {
+            confetti({
+                ...defaults,
+                ...opts,
+                particleCount: Math.floor(count * particleRatio)
+            });
+        }
+
+        // Trigger the explosion on page load
+        fire(0.25, { spread: 26, startVelocity: 55 });
+        fire(0.2, { spread: 60 });
+        fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+        fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+        fire(0.1, { spread: 120, startVelocity: 45 });
+
+        // 3. Analytics: Final Purchase Event
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'purchase',
+            'ecommerce': {
+                'transaction_id': document.getElementById('order-id').innerText,
+                'affiliation': 'Online Store',
+                'currency': 'EUR'
+            }
+        });
+
+     
+    // 1. Generate and display the final Order ID
+    const finalOrderId = '#FIT-' + Math.floor(Math.random() * 900000 + 100000);
+    document.getElementById('order-id').innerText = finalOrderId;
+
+    // 2. Clear the "Cart" state
+    // If you were using localStorage to keep the cart between refreshes, 
+    // this line ensures it is deleted after the purchase.
+    localStorage.removeItem('selectedItems'); 
+    localStorage.removeItem('totalPrice');
+
+    // 3. Trigger the party confetti (already in your code)
+    // ... (confetti code here)
+
+    // 4. Final Analytics Push
+    // This tells GTM and GA4 that the transaction is complete and the items are "bought"
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        'event': 'purchase_complete',
+        'ecommerce': {
+            'transaction_id': finalOrderId,
+            'status': 'cart_cleared'
+        }
+    });
+
+    console.log("Transaction finalized: Cart cleared and data synced to Sheet.");
+    </script>
+</body>
+</html>
