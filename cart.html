@@ -175,6 +175,8 @@ function updateTotal(amount) {
 document.getElementById('proceed-btn').addEventListener('click', async () => {
     const firstName = document.getElementById('fname').value;
     const lastName = document.getElementById('lname').value;
+    const totalPriceText = document.getElementById('total-price').innerText;
+    const totalPriceValue = parseFloat(totalPriceText.replace('€', ''));
 
     if (!firstName || checkedIds.length === 0) {
         alert("Please enter your name and select at least one item to purchase.");
@@ -184,47 +186,45 @@ document.getElementById('proceed-btn').addEventListener('click', async () => {
     const payload = {
         firstName: firstName,
         lastName: lastName,
-        // We only send the IDs that are CHECKED
         productIds: checkedIds.join(', '),
-        price: document.getElementById('total-price').innerText
+        price: totalPriceText
     };
 
-    // ... Your Fetch/Google Script code here ...
-    console.log("Purchasing items:", payload);
-    alert("Syncing " + checkedIds.length + " items to CDP...");
-});
+    // --- GA4 DATA LAYER PUSH (This makes it a "Purchase" in Analytics) ---
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        'event': 'purchase',
+        'ecommerce': {
+            'transaction_id': 'T_' + Date.now(),
+            'value': totalPriceValue,
+            'currency': 'EUR',
+            'items': checkedIds.map(id => {
+                const p = products.find(prod => prod.id === id);
+                return { 'item_id': p.id, 'item_name': p.name, 'price': p.price };
+            })
+        }
+    });
 
-// Initial Load
-renderCart();
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-41R4R1C5T7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-41R4R1C5T7');
-    // 1. Replace the URL below with your Google Apps Script "Web App" URL
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxW82oFPuFVnp633vq0-kPtOeY7ju6WfUqfhOMDlUKwFfRTmGvUoXEyCpiXCmDIAOnx/exec'; 
+    // --- GOOGLE SHEETS SYNC ---
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxW82oFPuFVnp633vq0-kPtOeY7ju6WfUqfhOMDlUKwFfRTmGvUoXEyCpiXCmDIAOnx/exec';
     
-    // 2. This sends the data to your Google Sheet
     fetch(scriptURL, {
         method: 'POST',
-        mode: 'no-cors', 
+        mode: 'no-cors',
         body: JSON.stringify(payload)
     })
     .then(() => {
-        console.log("Success! Data sent to CDP Sheet.");
-        alert("Syncing " + checkedIds.length + " items to CDP...");
-        
-        // Optional: Clear the cart after a successful sync
+        alert("Success! Purchase recorded and synced to CDP.");
         localStorage.removeItem('fitstore_bag');
-        window.location.href = "index.html"; 
+        window.location.href = "index.html";
     })
     .catch(error => console.error('Error!', error.message));
+});
 </script>
 </body>
 
 </html>
+
 
 
 
