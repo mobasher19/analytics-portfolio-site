@@ -3,25 +3,25 @@
 <head>
     <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MX9K2M96');</script>
-<!-- End Google Tag Manager -->
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MX9K2M96');</script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitStore | Main Gallery</title>
+    <title>FitStore | The Art of Recovery</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    
     <style>
         .bg-beige { background-color: #F5F5F0; }
         .text-charcoal { color: #020202; }
-        .bg-stone { background-color: #8B7E66; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Inter', sans-serif; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
-    <div class="space-x-12 text-[10px] uppercase tracking-[0.2em] font-medium">
-    <a href="index.html" class="hover:opacity-50 transition">Collection</a>
-    <a href="cart.html" class="hover:opacity-50 transition">Cart <span id="cart-count">(0)</span> 🛒</a>
-</div>
     </head>
 <body class="bg-beige text-charcoal font-light">
     <!-- Google Tag Manager (noscript) -->
@@ -55,26 +55,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <script>
         const products = [
-            // RECOVERY
-            { id: 1, name: "Muscle Percussion Gun", cat: "Recovery", price: 120.00, desc: "Deep tissue relief.", img: "https://via.placeholder.com/400x500" },
-            { id: 2, name: "Foam Roller Deluxe", cat: "Recovery", price: 35.00, desc: "High-density recovery.", img: "https://via.placeholder.com/400x500" },
-            { id: 3, name: "Compression Sleeves", cat: "Recovery", price: 25.00, desc: "Improve circulation.", img: "https://via.placeholder.com/400x500" },
-            { id: 4, name: "Aromatherapy Mist", cat: "Recovery", price: 18.00, desc: "Post-workout calm.", img: "https://via.placeholder.com/400x500" },
-            { id: 5, name: "Epsom Soak Salt", cat: "Recovery", price: 15.00, desc: "Magnesium-rich bath.", img: "https://via.placeholder.com/400x500" },
-            // STRENGTH
-            { id: 6, name: "Resistance Band Set", cat: "Strength", price: 29.99, desc: "3 levels of tension.", img: "https://via.placeholder.com/400x500" },
-            { id: 7, name: "Kettlebell 16kg", cat: "Strength", price: 55.00, desc: "Cast iron precision.", img: "https://via.placeholder.com/400x500" },
-            { id: 8, name: "Adjustable Dumbbells", cat: "Strength", price: 199.00, desc: "Space-saving power.", img: "https://via.placeholder.com/400x500" },
-            { id: 9, name: "Pull Up Bar", cat: "Strength", price: 45.00, desc: "Doorway installation.", img: "https://via.placeholder.com/400x500" },
-            { id: 10, name: "Weighted Vest", cat: "Strength", price: 80.00, desc: "Extra 10kg challenge.", img: "https://via.placeholder.com/400x500" },
-            // MINDFULNESS
-            { id: 11, name: "Cork Yoga Mat", cat: "Mindfulness", price: 85.00, desc: "Natural sustainable grip.", img: "https://via.placeholder.com/400x500" },
-            { id: 12, name: "Meditation Cushion", cat: "Mindfulness", price: 40.00, desc: "Perfect spinal alignment.", img: "https://via.placeholder.com/400x500" },
-            { id: 13, name: "Singing Bowl", cat: "Mindfulness", price: 65.00, desc: "Sound healing frequency.", img: "https://via.placeholder.com/400x500" },
-            { id: 14, name: "Incense Holder", cat: "Mindfulness", price: 22.00, desc: "Ceramic handcrafted.", img: "https://via.placeholder.com/400x500" },
-            { id: 15, name: "Yoga Block Pair", cat: "Mindfulness", price: 20.00, desc: "Expand your reach.", img: "https://via.placeholder.com/400x500" }
-        ];
-
+        // RECOVERY
+        { id: 1, name: "Muscle Percussion Gun", cat: "Recovery", price: 120.00, desc: "Deep tissue relief.", img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800" },
+        { id: 2, name: "Foam Roller Deluxe", cat: "Recovery", price: 35.00, desc: "High-density recovery.", img: "https://images.unsplash.com/photo-1591258339890-503610499778?auto=format&fit=crop&q=80&w=800" },
+        { id: 3, name: "Compression Sleeves", cat: "Recovery", price: 25.00, desc: "Improve circulation.", img: "https://images.unsplash.com/photo-1518459031867-a89b944bffe4?auto=format&fit=crop&q=80&w=800" },
+        { id: 4, name: "Aromatherapy Mist", cat: "Recovery", price: 18.00, desc: "Post-workout calm.", img: "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&q=80&w=800" },
+        { id: 5, name: "Epsom Soak Salt", cat: "Recovery", price: 15.00, desc: "Magnesium-rich bath.", img: "https://images.unsplash.com/photo-1559132205-72810811550c?auto=format&fit=crop&q=80&w=800" },
+        
+        // STRENGTH
+        { id: 6, name: "Resistance Band Set", cat: "Strength", price: 29.99, desc: "3 levels of tension.", img: "https://images.unsplash.com/photo-1598289431512-b97b0917abbc?auto=format&fit=crop&q=80&w=800" },
+        { id: 7, name: "Kettlebell 16kg", cat: "Strength", price: 55.00, desc: "Cast iron precision.", img: "https://images.unsplash.com/photo-158694428190c-b1323b688755?auto=format&fit=crop&q=80&w=800" },
+        { id: 8, name: "Adjustable Dumbbells", cat: "Strength", price: 199.00, desc: "Space-saving power.", img: "https://images.unsplash.com/photo-1638531762740-4965e6488390?auto=format&fit=crop&q=80&w=800" },
+        { id: 9, name: "Pull Up Bar", cat: "Strength", price: 45.00, desc: "Doorway installation.", img: "https://images.unsplash.com/photo-1598632640487-3924a745f560?auto=format&fit=crop&q=80&w=800" },
+        { id: 10, name: "Weighted Vest", cat: "Strength", price: 80.00, desc: "Extra 10kg challenge.", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800" },
+        
+        // MINDFULNESS
+        { id: 11, name: "Cork Yoga Mat", cat: "Mindfulness", price: 85.00, desc: "Natural sustainable grip.", img: "https://images.unsplash.com/photo-1592419044706-39796d40f98c?auto=format&fit=crop&q=80&w=800" },
+        { id: 12, name: "Meditation Cushion", cat: "Mindfulness", price: 40.00, desc: "Perfect spinal alignment.", img: "https://images.unsplash.com/photo-1545202989-724f3e1a8927?auto=format&fit=crop&q=80&w=800" },
+        { id: 13, name: "Singing Bowl", cat: "Mindfulness", price: 65.00, desc: "Sound healing frequency.", img: "https://images.unsplash.com/photo-1594404322475-0626305d391f?auto=format&fit=crop&q=80&w=800" },
+        { id: 14, name: "Incense Holder", cat: "Mindfulness", price: 22.00, desc: "Ceramic handcrafted.", img: "https://images.unsplash.com/photo-1602850318393-d85ad44c1c18?auto=format&fit=crop&q=80&w=800" },
+        { id: 15, name: "Yoga Block Pair", cat: "Mindfulness", price: 20.00, desc: "Expand your reach.", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" }
+    ];
         function renderProducts(filter = 'All') {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
@@ -156,5 +157,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </body>
 
 </html>
+
 
 
