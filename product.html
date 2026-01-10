@@ -95,7 +95,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             document.getElementById('p-cat').innerText = product.cat;
             document.getElementById('p-img').src = product.img;
             renderRelated(product.cat, product.id);
-        } else {
+        } 
+        // ANALYTICS: Track that the user viewed this specific product
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+    event: 'view_item',
+    ecommerce: {
+        currency: "EUR",
+        value: product.price,
+        items: [{
+            item_id: product.id,
+            item_name: product.name,
+            item_category: product.cat,
+            price: product.price,
+            quantity: 1
+        }]
+    }
+});
+        else {
             window.location.href = 'index.html';
         }
 
@@ -151,5 +168,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </body>
 
 </html>
+
 
 
