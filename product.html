@@ -58,105 +58,93 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
     </section>
 
-    <script>
-      const products = [
-    { id: 1, name: "Muscle Percussion Gun", cat: "Recovery", price: 120.00, desc: "Deep tissue relief for sore muscles.", img: "https://images.unsplash.com/photo-1600880210836-8f83199676be?q=80&w=1000" },
-    { id: 2, name: "Foam Roller Deluxe", cat: "Recovery", price: 35.00, desc: "High-density foam for muscle knots.", img: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?q=80&w=1000" },
-    { id: 3, name: "Compression Sleeves", cat: "Recovery", price: 25.00, desc: "Improve circulation and reduce swelling.", img: "https://images.unsplash.com/photo-1519415510236-855909a04bc6?q=80&w=1000" },
-    { id: 4, name: "Aromatherapy Mist", cat: "Recovery", price: 18.00, desc: "Calming scents for post-workout rest.", img: "https://images.unsplash.com/photo-1616132422495-1e9665e3d543?q=80&w=1000" },
-    { id: 5, name: "Epsom Soak Salt", cat: "Recovery", price: 15.00, desc: "Magnesium-rich salt for muscle recovery.", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecee?q=80&w=1000" },
-    { id: 6, name: "Resistance Band Set", cat: "Strength", price: 29.99, desc: "Three levels of resistance for any workout.", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" },
-    { id: 7, name: "Kettlebell 16kg", cat: "Strength", price: 55.00, desc: "Solid cast iron for strength building.", img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=1000" },
-    { id: 8, name: "Adjustable Dumbbells", cat: "Strength", price: 199.00, desc: "Space-saving weights for home gyms.", img: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=1000" },
-    { id: 9, name: "Pull Up Bar", cat: "Strength", price: 45.00, desc: "Easy doorway installation for upper body.", img: "https://images.unsplash.com/photo-1544033527-b192daee1f5b?q=80&w=1000" },
-    { id: 10, name: "Weighted Vest", cat: "Strength", price: 80.00, desc: "Add 10kg of resistance to your movement.", img: "https://images.unsplash.com/photo-1599058917233-57c0e88cf44b?q=80&w=1000" },
-    { id: 11, name: "Cork Yoga Mat", cat: "Mindfulness", price: 85.00, desc: "Sustainable and naturally antimicrobial.", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
-    { id: 12, name: "Meditation Cushion", cat: "Mindfulness", price: 40.00, desc: "Ergonomic support for deep focus.", img: "https://images.unsplash.com/photo-1593810450967-f9c42742e326?q=80&w=1000" },
-    { id: 13, name: "Singing Bowl", cat: "Mindfulness", price: 65.00, desc: "Handcrafted for sound therapy.", img: "https://images.unsplash.com/photo-1590759235777-649dfbb1c850?q=80&w=1000" },
-    { id: 14, name: "Incense Holder", cat: "Mindfulness", price: 22.00, desc: "Minimalist ceramic design.", img: "https://images.unsplash.com/photo-1602161241198-d62f43be5c6e?q=80&w=1000" },
-    { id: 15, name: "Yoga Block Pair", cat: "Mindfulness", price: 20.00, desc: "Helpful support for new poses.", img: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?q=80&w=1000" }
-];
+  <script>
+    const products = [
+        { id: 1, name: "Muscle Percussion Gun", cat: "Recovery", price: 120.00, desc: "Deep tissue relief for sore muscles.", img: "https://images.unsplash.com/photo-1600880210836-8f83199676be?q=80&w=1000" },
+        { id: 2, name: "Foam Roller Deluxe", cat: "Recovery", price: 35.00, desc: "High-density foam for muscle knots.", img: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?q=80&w=1000" },
+        { id: 3, name: "Compression Sleeves", cat: "Recovery", price: 25.00, desc: "Improve circulation and reduce swelling.", img: "https://images.unsplash.com/photo-1519415510236-855909a04bc6?q=80&w=1000" },
+        { id: 4, name: "Aromatherapy Mist", cat: "Recovery", price: 18.00, desc: "Calming scents for post-workout rest.", img: "https://images.unsplash.com/photo-1616132422495-1e9665e3d543?q=80&w=1000" },
+        { id: 5, name: "Epsom Soak Salt", cat: "Recovery", price: 15.00, desc: "Magnesium-rich salt for muscle recovery.", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecee?q=80&w=1000" },
+        { id: 6, name: "Resistance Band Set", cat: "Strength", price: 29.99, desc: "Three levels of resistance for any workout.", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" },
+        { id: 7, name: "Kettlebell 16kg", cat: "Strength", price: 55.00, desc: "Solid cast iron for strength building.", img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=1000" },
+        { id: 8, name: "Adjustable Dumbbells", cat: "Strength", price: 199.00, desc: "Space-saving weights for home gyms.", img: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=1000" },
+        { id: 9, name: "Pull Up Bar", cat: "Strength", price: 45.00, desc: "Easy doorway installation for upper body.", img: "https://images.unsplash.com/photo-1544033527-b192daee1f5b?q=80&w=1000" },
+        { id: 10, name: "Weighted Vest", cat: "Strength", price: 80.00, desc: "Add 10kg of resistance to your movement.", img: "https://images.unsplash.com/photo-1599058917233-57c0e88cf44b?q=80&w=1000" },
+        { id: 11, name: "Cork Yoga Mat", cat: "Mindfulness", price: 85.00, desc: "Sustainable and naturally antimicrobial.", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
+        { id: 12, name: "Meditation Cushion", cat: "Mindfulness", price: 40.00, desc: "Ergonomic support for deep focus.", img: "https://images.unsplash.com/photo-1593810450967-f9c42742e326?q=80&w=1000" },
+        { id: 13, name: "Singing Bowl", cat: "Mindfulness", price: 65.00, desc: "Handcrafted for sound therapy.", img: "https://images.unsplash.com/photo-1590759235777-649dfbb1c850?q=80&w=1000" },
+        { id: 14, name: "Incense Holder", cat: "Mindfulness", price: 22.00, desc: "Minimalist ceramic design.", img: "https://images.unsplash.com/photo-1602161241198-d62f43be5c6e?q=80&w=1000" },
+        { id: 15, name: "Yoga Block Pair", cat: "Mindfulness", price: 20.00, desc: "Helpful support for new poses.", img: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?q=80&w=1000" }
+    ];
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = parseInt(urlParams.get('id'));
-        const product = products.find(p => p.id === productId);
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'));
+    const product = products.find(p => p.id === productId);
 
-        // 1. UPDATE CART COUNTER UI
-        function updateCounter() {
-            const bag = JSON.parse(localStorage.getItem('fitstore_bag')) || [];
-            document.getElementById('cart-count').innerText = `(${bag.length})`;
-        }
-
-        // 2. RENDER PAGE DATA
-        if (product) {
-            document.getElementById('p-name').innerText = product.name;
-            document.getElementById('p-price').innerText = "€" + product.price.toFixed(2);
-            document.getElementById('p-desc').innerText = product.desc;
-            document.getElementById('p-cat').innerText = product.cat;
-            document.getElementById('p-img').src = product.img;
-            renderRelated(product.cat, product.id);
-        } 
-        // ANALYTICS: Track that the user viewed this specific product
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-    event: 'view_item',
-    ecommerce: {
-        currency: "EUR",
-        value: product.price,
-        items: [{
-            item_id: product.id,
-            item_name: product.name,
-            item_category: product.cat,
-            price: product.price,
-            quantity: 1
-        }]
+    function updateCounter() {
+        const bag = JSON.parse(localStorage.getItem('fitstore_bag')) || [];
+        document.getElementById('cart-count').innerText = `(${bag.length})`;
     }
-});
-        else {
-            window.location.href = 'index.html';
-        }
 
-        // 3. STAY ON PAGE ADD TO CART
-        document.getElementById('addToCart').onclick = function() {
-            let bag = JSON.parse(localStorage.getItem('fitstore_bag')) || [];
-            if (!bag.includes(product.id)) {
-                bag.push(product.id);
+    // Corrected Render Block
+    if (product) {
+        document.getElementById('p-name').innerText = product.name;
+        document.getElementById('p-price').innerText = "€" + product.price.toFixed(2);
+        document.getElementById('p-desc').innerText = product.desc;
+        document.getElementById('p-cat').innerText = product.cat;
+        document.getElementById('p-img').src = product.img;
+        
+        renderRelated(product.cat, product.id);
+
+        // ANALYTICS View Item
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: 'view_item',
+            ecommerce: {
+                currency: "EUR",
+                value: product.price,
+                items: [{
+                    item_id: product.id,
+                    item_name: product.name,
+                    price: product.price,
+                    quantity: 1
+                }]
             }
-            localStorage.setItem('fitstore_bag', JSON.stringify(bag));
-            
-            // UI Feedback
-            updateCounter();
-            this.innerText = "Added to Bag";
-            this.style.backgroundColor = "#8B7E66";
-            
-            setTimeout(() => {
-                this.innerText = "Add to Bag";
-                this.style.backgroundColor = "#2D2D2D";
-            }, 2000);
-        };
+        });
+    } else {
+        window.location.href = 'index.html';
+    }
 
-        // 4. RENDER RELATED PRODUCTS
-        function renderRelated(category, currentId) {
-            const grid = document.getElementById('related-grid');
-            // Filter products in same category excluding current
-            const related = products.filter(p => p.cat === category && p.id !== currentId).slice(0, 3);
-            
-            related.forEach(p => {
-                grid.innerHTML += `
-                    <a href="product.html?id=${p.id}" class="group block text-center">
-                        <div class="bg-white p-3 rounded-sm shadow-sm mb-6 overflow-hidden">
-                            <img src="${p.img}" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
-                        </div>
-                        <h4 class="text-[10px] uppercase tracking-widest font-bold mb-2">${p.name}</h4>
-                        <p class="text-gray-400 text-xs italic">€${p.price.toFixed(2)}</p>
-                    </a>
-                `;
-            });
+    document.getElementById('addToCart').onclick = function() {
+        let bag = JSON.parse(localStorage.getItem('fitstore_bag')) || [];
+        if (!bag.includes(product.id)) {
+            bag.push(product.id);
         }
-
-        // Initial Counter Load
+        localStorage.setItem('fitstore_bag', JSON.stringify(bag));
         updateCounter();
-    </script>
+        this.innerText = "Added to Bag";
+        setTimeout(() => { this.innerText = "Add to Bag"; }, 2000);
+    };
+
+    function renderRelated(category, currentId) {
+        const grid = document.getElementById('related-grid');
+        const related = products.filter(p => p.cat === category && p.id !== currentId).slice(0, 3);
+        grid.innerHTML = ''; // Clear first
+        related.forEach(p => {
+            grid.innerHTML += `
+                <a href="product.html?id=${p.id}" class="group block text-center">
+                    <div class="bg-white p-3 rounded-sm shadow-sm mb-6 overflow-hidden">
+                        <img src="${p.img}" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <h4 class="text-[10px] uppercase tracking-widest font-bold mb-2">${p.name}</h4>
+                    <p class="text-gray-400 text-xs italic">€${p.price.toFixed(2)}</p>
+                </a>
+            `;
+        });
+    }
+
+    updateCounter();
+</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-41R4R1C5T7"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -168,6 +156,7 @@ window.dataLayer.push({
 </body>
 
 </html>
+
 
 
 
