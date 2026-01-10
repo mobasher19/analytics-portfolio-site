@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MX9K2M96');</script>
-<!-- End Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MX9K2M96');</script>
     <meta charset="UTF-8">
     <title>FitStore | Your Bag</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital@0;1&display=swap');
-        
-        
         body { font-family: 'Inter', sans-serif; background-color: #F5F5F0; color: #2D2D2D; }
         .font-serif { font-family: 'Playfair Display', serif; }
-        .bg-beige { background-color: #F5F5F0; }
-        .bg-stone { background-color: #EAEAE3; }
-        
         .btn-primary { 
             background-color: #2D2D2D; 
             color: white; 
@@ -32,26 +24,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             padding: 1.25rem; 
         }
         .btn-primary:hover { background-color: #8B7E66; }
-        
         input { border: 1px solid #e5e7eb; background-color: white; }
         input:focus { border-color: #8B7E66; outline: none; }
-        
     </style>
-    <div class="space-x-12 text-[10px] uppercase tracking-[0.2em] font-medium">
-    <a href="index.html" class="hover:opacity-50 transition">Collection</a>
-    <a href="cart.html" class="hover:opacity-50 transition">Cart <span id="cart-count">(0)</span> 🛒</a>
-</div>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX9K2M96"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX9K2M96"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <nav class="bg-white/90 backdrop-blur-md py-8 px-12 flex justify-between items-center border-b border-gray-100">
         <a href="index.html" class="text-xl tracking-[0.3em] font-light uppercase">FitStore</a>
         <div class="space-x-12 text-[10px] uppercase tracking-[0.2em] font-medium">
             <a href="index.html" class="hover:opacity-50 transition">Collection</a>
-            <a href="cart.html" class="border-b border-black pb-1">Cart 🛒</a>
+            <a href="cart.html" class="border-b border-black pb-1">Cart <span id="cart-count">(0)</span> 🛒</a>
         </div>
     </nav>
 
@@ -80,152 +65,144 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </main>
 
     <script>
-// 1. DATA SETUP
-const products = [
-    { id: 1, name: "Muscle Percussion Gun", price: 120.00 },
-    { id: 2, name: "Foam Roller Deluxe", price: 35.00 },
-    { id: 3, name: "Compression Sleeves", price: 25.00 },
-    { id: 4, name: "Aromatherapy Mist", price: 18.00 },
-    { id: 5, name: "Epsom Soak Salt", price: 15.00 },
-    { id: 6, name: "Resistance Band Set", price: 29.99 },
-    { id: 7, name: "Kettlebell 16kg", price: 55.00 },
-    { id: 8, name: "Adjustable Dumbbells", price: 199.00 },
-    { id: 9, name: "Pull Up Bar", price: 45.00 },
-    { id: 10, name: "Weighted Vest", price: 80.00 },
-    { id: 11, name: "Cork Yoga Mat", price: 85.00 },
-    { id: 12, name: "Meditation Cushion", price: 40.00 },
-    { id: 13, name: "Singing Bowl", price: 65.00 },
-    { id: 14, name: "Incense Holder", price: 22.00 },
-    { id: 15, name: "Yoga Block Pair", price: 20.00 }
-];
+    const products = [
+        { id: 1, name: "Muscle Percussion Gun", price: 120.00 },
+        { id: 2, name: "Foam Roller Deluxe", price: 35.00 },
+        { id: 3, name: "Compression Sleeves", price: 25.00 },
+        { id: 4, name: "Aromatherapy Mist", price: 18.00 },
+        { id: 5, name: "Epsom Soak Salt", price: 15.00 },
+        { id: 6, name: "Resistance Band Set", price: 29.99 },
+        { id: 7, name: "Kettlebell 16kg", price: 55.00 },
+        { id: 8, name: "Adjustable Dumbbells", price: 199.00 },
+        { id: 9, name: "Pull Up Bar", price: 45.00 },
+        { id: 10, name: "Weighted Vest", price: 80.00 },
+        { id: 11, name: "Cork Yoga Mat", price: 85.00 },
+        { id: 12, name: "Meditation Cushion", price: 40.00 },
+        { id: 13, name: "Singing Bowl", price: 65.00 },
+        { id: 14, name: "Incense Holder", price: 22.00 },
+        { id: 15, name: "Yoga Block Pair", price: 20.00 }
+    ];
 
-// 2. STATE MANAGEMENT
-// All items in the bag
-let bagIds = JSON.parse(localStorage.getItem('fitstore_bag')) || [];
-// Only the IDs that are currently CHECKED for purchase
-let checkedIds = [...bagIds]; 
+    let bagIds = JSON.parse(localStorage.getItem('fitstore_bag')) || [];
+    // Ensure bagIds are treated as numbers
+    bagIds = bagIds.map(Number);
+    let checkedIds = [...bagIds]; 
 
-function renderCart() {
-    const listContainer = document.getElementById('cart-list');
-    listContainer.innerHTML = '';
-    
-    const itemsInBag = products.filter(p => bagIds.includes(Number(p.id)));
+    function renderCart() {
+        const listContainer = document.getElementById('cart-list');
+        const cartCount = document.getElementById('cart-count');
+        listContainer.innerHTML = '';
+        
+        // Update the cart icon count
+        cartCount.innerText = `(${bagIds.length})`;
 
-    if (itemsInBag.length === 0) {
-        listContainer.innerHTML = '<p class="text-center text-gray-400 py-10 italic">Your bag is empty.</p>';
-        updateTotal(0);
-        return;
-    }
+        const itemsInBag = products.filter(p => bagIds.includes(p.id));
 
-    let runningTotal = 0;
-
-    itemsInBag.forEach(p => {
-        const isChecked = checkedIds.includes(p.id);
-        if (isChecked) runningTotal += p.price;
-
-        listContainer.innerHTML += `
-            <div class="flex justify-between items-center pb-6 border-b border-gray-100 group">
-                <div class="flex items-center space-x-4">
-                    <input type="checkbox" 
-                           ${isChecked ? 'checked' : ''} 
-                           onchange="toggleSelection(${p.id})"
-                           class="w-4 h-4 accent-stone-800 cursor-pointer">
-                    
-                    <div class="flex flex-col">
-                        <span class="text-sm font-medium ${!isChecked ? 'text-gray-400 line-through' : ''}">${p.name}</span>
-                        <button onclick="removeFromBag(${p.id})" class="text-[9px] uppercase text-red-400 hover:text-red-600 text-left mt-1">Remove</button>
-                    </div>
-                </div>
-                <span class="text-sm font-serif italic ${!isChecked ? 'text-gray-300' : ''}">€${p.price.toFixed(2)}</span>
-            </div>
-        `;
-    });
-
-    updateTotal(runningTotal);
-}
-
-// 3. LOGIC FUNCTIONS
-
-function toggleSelection(id) {
-    if (checkedIds.includes(id)) {
-        // If it was checked, remove it from selection
-        checkedIds = checkedIds.filter(i => i !== id);
-    } else {
-        // If it was unchecked, add it to selection
-        checkedIds.push(id);
-    }
-    renderCart(); // Refresh UI and Total
-}
-
-function removeFromBag(id) {
-    // Remove from the master bag
-    bagIds = bagIds.filter(i => i !== Number(id));
-    // Also remove from checked selection
-    checkedIds = checkedIds.filter(i => i !== Number(id));
-    
-    localStorage.setItem('fitstore_bag', JSON.stringify(bagIds));
-    renderCart();
-}
-
-function updateTotal(amount) {
-    document.getElementById('total-price').innerText = `€${amount.toFixed(2)}`;
-}
-
-// 4. CHECKOUT LOGIC
-document.getElementById('proceed-btn').addEventListener('click', async () => {
-    const firstName = document.getElementById('fname').value;
-    const lastName = document.getElementById('lname').value;
-    const totalPriceText = document.getElementById('total-price').innerText;
-    const totalPriceValue = parseFloat(totalPriceText.replace('€', ''));
-
-    if (!firstName || checkedIds.length === 0) {
-        alert("Please enter your name and select at least one item to purchase.");
-        return;
-    }
-
-    const payload = {
-        firstName: firstName,
-        lastName: lastName,
-        productIds: checkedIds.join(', '),
-        price: totalPriceText
-    };
-
-    // --- GA4 DATA LAYER PUSH (This makes it a "Purchase" in Analytics) ---
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        'event': 'purchase',
-        'ecommerce': {
-            'transaction_id': 'T_' + Date.now(),
-            'value': totalPriceValue,
-            'currency': 'EUR',
-            'items': checkedIds.map(id => {
-                const p = products.find(prod => prod.id === id);
-                return { 'item_id': p.id, 'item_name': p.name, 'price': p.price };
-            })
+        if (itemsInBag.length === 0) {
+            listContainer.innerHTML = '<p class="text-center text-gray-400 py-10 italic">Your bag is empty.</p>';
+            updateTotal(0);
+            return;
         }
+
+        let runningTotal = 0;
+
+        itemsInBag.forEach(p => {
+            const isChecked = checkedIds.includes(p.id);
+            if (isChecked) runningTotal += p.price;
+
+            listContainer.innerHTML += `
+                <div class="flex justify-between items-center pb-6 border-b border-gray-100 group">
+                    <div class="flex items-center space-x-4">
+                        <input type="checkbox" 
+                               ${isChecked ? 'checked' : ''} 
+                               onchange="toggleSelection(${p.id})"
+                               class="w-4 h-4 accent-stone-800 cursor-pointer">
+                        <div class="flex flex-col">
+                            <span class="text-sm font-medium ${!isChecked ? 'text-gray-400 line-through' : ''}">${p.name}</span>
+                            <button onclick="removeFromBag(${p.id})" class="text-[9px] uppercase text-red-400 hover:text-red-600 text-left mt-1">Remove</button>
+                        </div>
+                    </div>
+                    <span class="text-sm font-serif italic ${!isChecked ? 'text-gray-300' : ''}">€${p.price.toFixed(2)}</span>
+                </div>
+            `;
+        });
+
+        updateTotal(runningTotal);
+    }
+
+    function toggleSelection(id) {
+        id = Number(id);
+        if (checkedIds.includes(id)) {
+            checkedIds = checkedIds.filter(i => i !== id);
+        } else {
+            checkedIds.push(id);
+        }
+        renderCart();
+    }
+
+    function removeFromBag(id) {
+        id = Number(id);
+        bagIds = bagIds.filter(i => i !== id);
+        checkedIds = checkedIds.filter(i => i !== id);
+        localStorage.setItem('fitstore_bag', JSON.stringify(bagIds));
+        renderCart();
+    }
+
+    function updateTotal(amount) {
+        document.getElementById('total-price').innerText = `€${amount.toFixed(2)}`;
+    }
+
+    document.getElementById('proceed-btn').addEventListener('click', async () => {
+        const firstName = document.getElementById('fname').value;
+        const lastName = document.getElementById('lname').value;
+        const totalPriceText = document.getElementById('total-price').innerText;
+        const totalPriceValue = parseFloat(totalPriceText.replace('€', ''));
+
+        if (!firstName || checkedIds.length === 0) {
+            alert("Please enter your name and select at least one item to purchase.");
+            return;
+        }
+
+        const payload = {
+            firstName: firstName,
+            lastName: lastName,
+            productIds: checkedIds.join(', '),
+            price: totalPriceText
+        };
+
+        // --- GA4 DATA LAYER PUSH ---
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'purchase',
+            'ecommerce': {
+                'transaction_id': 'T_' + Date.now(),
+                'value': totalPriceValue,
+                'currency': 'EUR',
+                'items': checkedIds.map(id => {
+                    const p = products.find(prod => prod.id === id);
+                    return { 'item_id': p.id, 'item_name': p.name, 'price': p.price };
+                })
+            }
+        });
+
+        // --- GOOGLE SHEETS SYNC ---
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxW82oFPuFVnp633vq0-kPtOeY7ju6WfUqfhOMDlUKwFfRTmGvUoXEyCpiXCmDIAOnx/exec';
+        
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify(payload)
+        })
+        .then(() => {
+            alert("Success! Purchase recorded and synced to CDP.");
+            localStorage.removeItem('fitstore_bag');
+            window.location.href = "index.html";
+        })
+        .catch(error => console.error('Error!', error.message));
     });
 
-    // --- GOOGLE SHEETS SYNC ---
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxW82oFPuFVnp633vq0-kPtOeY7ju6WfUqfhOMDlUKwFfRTmGvUoXEyCpiXCmDIAOnx/exec';
-    
-    fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify(payload)
-    })
-    .then(() => {
-        alert("Success! Purchase recorded and synced to CDP.");
-        localStorage.removeItem('fitstore_bag');
-        window.location.href = "index.html";
-    })
-    .catch(error => console.error('Error!', error.message));
-});
-</script>
+    // Initial Load
+    renderCart();
+    </script>
 </body>
-
 </html>
-
-
-
-
-
