@@ -53,7 +53,7 @@
         </section>
 
     <script>
-        const products = [
+    const products = [
         // RECOVERY
         { id: 1, name: "Muscle Percussion Gun", cat: "Recovery", price: 120.00, desc: "Deep tissue relief.", img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800" },
         { id: 2, name: "Foam Roller Deluxe", cat: "Recovery", price: 35.00, desc: "High-density recovery.", img: "https://images.unsplash.com/photo-1591258339890-503610499778?auto=format&fit=crop&q=80&w=800" },
@@ -75,45 +75,60 @@
         { id: 14, name: "Incense Holder", cat: "Mindfulness", price: 22.00, desc: "Ceramic handcrafted.", img: "https://images.unsplash.com/photo-1602850318393-d85ad44c1c18?auto=format&fit=crop&q=80&w=800" },
         { id: 15, name: "Yoga Block Pair", cat: "Mindfulness", price: 20.00, desc: "Expand your reach.", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" }
     ];
-        function renderProducts(filter = 'All') {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = '';
-            
-            const filtered = filter === 'All' ? products : products.filter(p => p.cat === filter);
 
-            filtered.forEach(p => {
-                grid.innerHTML += `
-                    <div class="group">
-                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-200 aspect-[4/5]">
-                            <img src="${p.img}" class="w-full h-full object-cover grayscale-[20%] transition duration-700 group-hover:scale-110">
-                            <a href="product.html?id=${p.id}" class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur py-3 text-center text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition">View Detail</a>
-                        </div>
-                        <h3 class="font-medium text-lg">${p.name}</h3>
-                        <p class="text-gray-500 text-xs italic mb-2">${p.desc}</p>
-                        <p class="text-sm font-bold">€${p.price.toFixed(2)}</p>
+    function renderProducts(filter = 'All') {
+        const grid = document.getElementById('product-grid');
+        if (!grid) return; // Safety check
+        grid.innerHTML = '';
+        
+        const filtered = filter === 'All' ? products : products.filter(p => p.cat === filter);
+
+        filtered.forEach(p => {
+            grid.innerHTML += `
+                <div class="group">
+                    <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-200 aspect-[4/5]">
+                        <img src="${p.img}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <a href="product.html?id=${p.id}" class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur py-3 text-center text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition">View Detail</a>
                     </div>
-                `;
-            });
+                    <h3 class="font-medium text-sm tracking-wide">${p.name}</h3>
+                    <p class="text-gray-400 text-[10px] italic mb-2">${p.desc}</p>
+                    <p class="text-xs font-semibold">€${p.price.toFixed(2)}</p>
+                </div>
+            `;
+        });
 
-            // ANALYTICS HOOK: Track list view
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                event: 'view_item_list',
-                item_list_name: filter
-            });
-        }
+        // Push to DataLayer for GA4 tracking
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: 'view_item_list',
+            item_list_name: filter,
+            items: filtered.map((p, index) => ({
+                item_id: p.id,
+                item_name: p.name,
+                item_category: p.cat,
+                price: p.price,
+                index: index + 1
+            }))
+        });
+    }
 
-        function filterProducts(cat) {
-            // Update UI buttons
-            document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.classList.remove('bg-charcoal', 'text-white');
-                if(btn.innerText === cat) btn.classList.add('bg-charcoal', 'text-white');
-            });
-            renderProducts(cat);
-        }
+    function filterProducts(cat) {
+        // Find all buttons and reset their look
+        const buttons = document.querySelectorAll('button[onclick^="filterProducts"]');
+        buttons.forEach(btn => {
+            btn.style.borderBottom = "none";
+            if(btn.innerText === cat) {
+                btn.style.borderBottom = "1px solid black";
+            }
+        });
+        renderProducts(cat);
+    }
 
-        renderProducts(); // Initial Load
-    </script>
+    // Initial Load
+    document.addEventListener('DOMContentLoaded', () => {
+        renderProducts();
+    });
+</script>
     <script src="https://cdn.tailwindcss.com"></script>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital@0;1&display=swap');
@@ -156,6 +171,7 @@
 </body>
 
 </html>
+
 
 
 
