@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -21,8 +20,9 @@
         .font-serif { font-family: 'Playfair Display', serif; }
         body { font-family: 'Inter', sans-serif; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
+        .category-btn.active { border-bottom: 2px solid #020202; }
     </style>
-    </head>
+</head>
 <body class="bg-beige text-charcoal font-light">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX9K2M96"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -35,136 +35,80 @@
         </div>
     </nav>
 
-    <header class="py-16 px-12 text-center bg-[#EAEAE3]">
-        <h1 class="text-5xl font-serif mb-4">The Collection</h1>
-        <p class="text-gray-500 max-w-lg mx-auto italic">Quality equipment for the mindful athlete.</p>
+    <header class="py-24 px-12 text-center bg-[#EAEAE3]">
+        <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 mb-4 block">Est. 2026</span>
+        <h1 class="text-6xl font-serif italic mb-6">The Collection</h1>
+        <p class="text-gray-500 max-w-md mx-auto font-light leading-relaxed text-sm">Quality equipment for the mindful athlete.</p>
     </header>
 
-    <section class="py-8 px-12 max-w-6xl mx-auto">
-        <div class="flex space-x-4 overflow-x-auto pb-4 no-scrollbar justify-center">
-            <button onclick="filterProducts('All')" class="category-btn active px-6 py-2 rounded-full border border-charcoal bg-charcoal text-white text-xs uppercase tracking-widest">All</button>
-            <button onclick="filterProducts('Recovery')" class="category-btn px-6 py-2 rounded-full border border-gray-300 text-xs uppercase tracking-widest">Recovery</button>
-            <button onclick="filterProducts('Strength')" class="category-btn px-6 py-2 rounded-full border border-gray-300 text-xs uppercase tracking-widest">Strength</button>
-            <button onclick="filterProducts('Mindfulness')" class="category-btn px-6 py-2 rounded-full border border-gray-300 text-xs uppercase tracking-widest">Mindfulness</button>
-        </div>
+    <section class="py-8 px-12 max-w-6xl mx-auto flex justify-center space-x-8 bg-white border-b border-gray-100">
+        <button onclick="filterProducts('All')" class="category-btn text-[10px] uppercase tracking-widest hover:text-stone transition">All</button>
+        <button onclick="filterProducts('Recovery')" class="category-btn text-[10px] uppercase tracking-widest hover:text-stone transition">Recovery</button>
+        <button onclick="filterProducts('Strength')" class="category-btn text-[10px] uppercase tracking-widest hover:text-stone transition">Strength</button>
+        <button onclick="filterProducts('Mindfulness')" class="category-btn text-[10px] uppercase tracking-widest hover:text-stone transition">Mindfulness</button>
     </section>
 
     <section id="product-grid" class="py-12 px-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
         </section>
 
+    <script>
+        const products = [
+            { id: 1, name: "Muscle Percussion Gun", cat: "Recovery", price: 120.0, desc: "Deep tissue relief.", img: "https://images.unsplash.com/photo-1600880210836-8f83199676be?q=80&w=1000" },
+            { id: 2, name: "Foam Roller Deluxe", cat: "Recovery", price: 35.0, desc: "High-density foam.", img: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?q=80&w=1000" },
+            { id: 3, name: "Compression Sleeves", cat: "Recovery", price: 25.0, desc: "Improve circulation.", img: "https://images.unsplash.com/photo-1519415510236-855909a04bc6?q=80&w=1000" },
+            { id: 4, name: "Aromatherapy Mist", cat: "Recovery", price: 18.0, desc: "Post-workout rest.", img: "https://images.unsplash.com/photo-1616132422495-1e9665e3d543?q=80&w=1000" },
+            { id: 5, name: "Epsom Soak Salt", cat: "Recovery", price: 15.0, desc: "Magnesium-rich salt.", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecee?q=80&w=1000" },
+            { id: 6, name: "Resistance Band Set", cat: "Strength", price: 29.99, desc: "Three levels.", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" },
+            { id: 7, name: "Kettlebell 16kg", cat: "Strength", price: 55.0, desc: "Solid cast iron.", img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=1000" },
+            { id: 8, name: "Adjustable Dumbbells", cat: "Strength", price: 199.0, desc: "Space-saving weights.", img: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=1000" },
+            { id: 9, name: "Pull Up Bar", cat: "Strength", price: 45.0, desc: "Easy doorway installation.", img: "https://images.unsplash.com/photo-1544033527-b192daee1f5b?q=80&w=1000" },
+            { id: 10, name: "Weighted Vest", cat: "Strength", price: 80.0, desc: "Add 10kg resistance.", img: "https://images.unsplash.com/photo-1599058917233-57c0e88cf44b?q=80&w=1000" },
+            { id: 11, name: "Cork Yoga Mat", cat: "Mindfulness", price: 85.0, desc: "Sustainable grip.", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
+            { id: 12, name: "Meditation Cushion", cat: "Mindfulness", price: 40.0, desc: "Ergonomic support.", img: "https://images.unsplash.com/photo-1593810450967-f9c42742e326?q=80&w=1000" },
+            { id: 13, name: "Singing Bowl", cat: "Mindfulness", price: 65.0, desc: "Sound therapy.", img: "https://images.unsplash.com/photo-1590759235777-649dfbb1c850?q=80&w=1000" },
+            { id: 14, name: "Incense Holder", cat: "Mindfulness", price: 22.0, desc: "Ceramic design.", img: "https://images.unsplash.com/photo-1602161241198-d62f43be5c6e?q=80&w=1000" },
+            { id: 15, name: "Yoga Block Pair", cat: "Mindfulness", price: 20.0, desc: "Support for poses.", img: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?q=80&w=1000" }
+        ];
 
-   <script>
-    // 1. Unified Product Database
-   const products = [
-    { id: 1, name: "Muscle Percussion Gun", cat: "Recovery", price: 120.00, desc: "Deep tissue relief for sore muscles.", img: "https://images.unsplash.com/photo-1600880210836-8f83199676be?q=80&w=1000" },
-    { id: 2, name: "Foam Roller Deluxe", cat: "Recovery", price: 35.00, desc: "High-density foam for muscle knots.", img: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?q=80&w=1000" },
-    { id: 3, name: "Compression Sleeves", cat: "Recovery", price: 25.00, desc: "Improve circulation and reduce swelling.", img: "https://images.unsplash.com/photo-1519415510236-855909a04bc6?q=80&w=1000" },
-    { id: 4, name: "Aromatherapy Mist", cat: "Recovery", price: 18.00, desc: "Calming scents for post-workout rest.", img: "https://images.unsplash.com/photo-1616132422495-1e9665e3d543?q=80&w=1000" },
-    { id: 5, name: "Epsom Soak Salt", cat: "Recovery", price: 15.00, desc: "Magnesium-rich salt for muscle recovery.", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecee?q=80&w=1000" },
-    { id: 6, name: "Resistance Band Set", cat: "Strength", price: 29.99, desc: "Three levels of resistance for any workout.", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000" },
-    { id: 7, name: "Kettlebell 16kg", cat: "Strength", price: 55.00, desc: "Solid cast iron for strength building.", img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=1000" },
-    { id: 8, name: "Adjustable Dumbbells", cat: "Strength", price: 199.00, desc: "Space-saving weights for home gyms.", img: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=1000" },
-    { id: 9, name: "Pull Up Bar", cat: "Strength", price: 45.00, desc: "Easy doorway installation for upper body.", img: "https://images.unsplash.com/photo-1544033527-b192daee1f5b?q=80&w=1000" },
-    { id: 10, name: "Weighted Vest", cat: "Strength", price: 80.00, desc: "Add 10kg of resistance to your movement.", img: "https://images.unsplash.com/photo-1599058917233-57c0e88cf44b?q=80&w=1000" },
-    { id: 11, name: "Cork Yoga Mat", cat: "Mindfulness", price: 85.00, desc: "Sustainable and naturally antimicrobial.", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000" },
-    { id: 12, name: "Meditation Cushion", cat: "Mindfulness", price: 40.00, desc: "Ergonomic support for deep focus.", img: "https://images.unsplash.com/photo-1593810450967-f9c42742e326?q=80&w=1000" },
-    { id: 13, name: "Singing Bowl", cat: "Mindfulness", price: 65.00, desc: "Handcrafted for sound therapy.", img: "https://images.unsplash.com/photo-1590759235777-649dfbb1c850?q=80&w=1000" },
-    { id: 14, name: "Incense Holder", cat: "Mindfulness", price: 22.00, desc: "Minimalist ceramic design.", img: "https://images.unsplash.com/photo-1602161241198-d62f43be5c6e?q=80&w=1000" },
-    { id: 15, name: "Yoga Block Pair", cat: "Mindfulness", price: 20.00, desc: "Helpful support for new poses.", img: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?q=80&w=1000" }
-];
+        window.renderProducts = function(filter = 'All') {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            
+            const filtered = filter === 'All' ? products : products.filter(p => p.cat === filter);
 
-    // 2. Main Render Function
-    window.renderProducts = function(filter = 'All') {
-        console.log("Rendering products for category:", filter);
-        const grid = document.getElementById('product-grid');
-        
-        if (!grid) {
-            console.error("Could not find element with id 'product-grid'");
-            return;
-        }
-
-        grid.innerHTML = '';
-const filtered = filter === 'All' ? products : products.filter(p => p.cat === filter);
-        filtered.forEach(p => {
-            grid.innerHTML += `
-                <div class="group animate-fadeIn">
-                    <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-100 aspect-[4/5]">
-                        <img src="${p.img}" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                        <a href="product.html?id=${p.id}" class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur py-3 text-center text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition">View Detail</a>
+            filtered.forEach(p => {
+                grid.innerHTML += `
+                    <div class="group">
+                        <div class="relative overflow-hidden rounded-xl mb-4 bg-gray-100 aspect-[4/5]">
+                            <img src="${p.img}" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                            <a href="product.html?id=${p.id}" class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur py-3 text-center text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition">View Detail</a>
+                        </div>
+                        <h3 class="font-medium text-sm tracking-wide">${p.name}</h3>
+                        <p class="text-gray-400 text-[10px] italic mb-2">${p.desc}</p>
+                        <p class="text-xs font-semibold">€${p.price.toFixed(2)}</p>
                     </div>
-                    <h3 class="font-medium text-sm tracking-wide">${p.name}</h3>
-                    <p class="text-gray-400 text-[10px] italic mb-2">${p.desc}</p>
-                    <p class="text-xs font-semibold">€${p.price.toFixed(2)}</p>
-                </div>
-            `;
-        });
+                `;
+            });
 
-        // Analytics Push
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            event: 'view_item_list',
-            item_list_name: filter,
-            items: filtered.map((p, i) => ({ item_id: p.id, item_name: p.name, price: p.price, index: i+1 }))
-        });
-    };
+            // GTM DataLayer Push
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'view_item_list',
+                item_list_name: filter,
+                items: filtered.map((p, i) => ({ item_id: p.id, item_name: p.name, price: p.price, index: i+1 }))
+            });
+        };
 
-    // 3. Filter Logic
-    window.filterProducts = function(cat) {
-        renderProducts(cat);
-    };
+        window.filterProducts = function(cat) {
+            renderProducts(cat);
+        };
 
-    // 4. Force Run on Load
-    window.onload = function() {
-        console.log("Page loaded. Initializing products...");
-        renderProducts('All');
-    };
-</script>
-    <script src="https://cdn.tailwindcss.com"></script>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital@0;1&display=swap');
-    body { font-family: 'Inter', sans-serif; background-color: #F5F5F0; color: #2D2D2D; }
-    .font-serif { font-family: 'Playfair Display', serif; }
-    .bg-beige { background-color: #F8F4F1; }
-    .bg-stone { background-color: #F8F4F1; }
-    .btn-primary { background-color: #2D2D2D; color: white; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.75rem; transition: all 0.3s; }
-    .btn-primary:hover { background-color: #8B7E66; }
-</style>
-
-<nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 py-8 px-12 flex justify-between items-center border-b border-gray-100">
-    <a href="index.html" class="text-xl tracking-[0.3em] font-light uppercase">FitStore</a>
-    <div class="space-x-12 text-[10px] uppercase tracking-[0.2em] font-medium">
-        <a href="index.html" class="border-b border-black pb-1">Collection</a>
-        <a href="cart.html" class="hover:opacity-50 transition">Cart 🛒</a>
-    </div>
-</nav>
-
-<header class="py-24 px-12 text-center bg-stone">
-    <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 mb-4 block">Est. 2026</span>
-    <h1 class="text-6xl font-serif italic mb-6">The Art of Recovery</h1>
-    <p class="text-gray-500 max-w-md mx-auto font-light leading-relaxed text-sm">A curated selection of professional tools designed for the modern home sanctuary.</p>
-</header>
-
-<div class="flex justify-center space-x-8 py-12 border-b border-gray-100 bg-white">
-    <button onclick="filterProducts('All')" class="text-[10px] uppercase tracking-widest hover:text-stone transition">All</button>
-    <button onclick="filterProducts('Recovery')" class="text-[10px] uppercase tracking-widest hover:text-stone transition">Recovery</button>
-    <button onclick="filterProducts('Strength')" class="text-[10px] uppercase tracking-widest hover:text-stone transition">Strength</button>
-    <button onclick="filterProducts('Mindfulness')" class="text-[10px] uppercase tracking-widest hover:text-stone transition">Mindfulness</button>
-</div>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-41R4R1C5T7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-41R4R1C5T7');
-</script>
+        // Initial Load
+        window.onload = () => {
+            const bag = JSON.parse(localStorage.getItem('fitstore_bag')) || [];
+            document.getElementById('cart-count').innerText = `(${bag.length})`;
+            renderProducts('All');
+        };
+    </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
