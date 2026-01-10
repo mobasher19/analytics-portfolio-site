@@ -84,8 +84,7 @@
         }
 
         grid.innerHTML = '';
-        const filtered = filter === 'All' ? fitProducts : fitProducts.filter(p => p.cat === filter);
-
+const filtered = filter === 'All' ? products : products.filter(p => p.cat === filter);
         filtered.forEach(p => {
             grid.innerHTML += `
                 <div class="group animate-fadeIn">
@@ -162,6 +161,7 @@
 </body>
 
 </html>
+
 
 
 
